@@ -1,18 +1,14 @@
 <?php
-include_once 'datosconexionBD';
+include_once 'datosconexionBD.php';
 // Carga la configuración
 // $config = parse_ini_file('datosBD.ini');
 
-function obtenerConexionBD($BD=''){
+function obtenerConexionBD(){
 
     /* Intentamos establecer una conexión con el servidor.*/
     try {
-        if ($BD==''){
-            $conexion = new PDO("mysql:host=".SERVIDOR.";charset=utf8", USUARIO, CLAVE);
-           }
-           else{
-            $conexion  = new PDO("mysql:host=" . SERVIDOR . ";dbname=" . $BD.";charset=utf8", USUARIO, CLAVE);
-           }
+        
+            $conexion  = new PDO("mysql:host=" . SERVIDOR . ";dbname=" . BBDD .";charset=utf8", USUARIO, CLAVE); 
 
            /* Establecemos atributos para configurar la conexión PDO*/
            $conexion ->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);

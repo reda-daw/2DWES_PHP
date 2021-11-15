@@ -10,23 +10,39 @@
     <title>Formulario</title>
 
 </head>
+<?php
+    include_once 'cursoDAO.php';
+    $cursos = obtenerCursos();
+                
+?>
+
 <body>
     <div class="container">
         <form action="index.php" method="post"> 
             <br>
             <p> Nombre: <input type="text" name="Nombre" /></p>
             <p>Ciclo:
-                DAW<input type="radio" name="ciclo" value="1">
-                DAM<input type="radio" name="ciclo" value="2">
-                ASIR<input type="radio" name="ciclo" value="3">
+
+            <?php
+       
+
+                foreach($cursos as $curso){
+
+                    echo $curso["nombre"].'<input type="radio" name="'.$curso['nombre'] .'" value="'.$curso["id"].'">';
+                    
+                }
+
+            ?>
+                
+                
             </p>
             <p> Curso:
-                primero <input type="checkbox" name="curso" value="primero">
-                segundo <input type="checkbox" name="curso" value="segundo">
+                primero <input type="checkbox" name="Curso" value="primero">
+                segundo <input type="checkbox" name="Curso" value="segundo">
             </p>
             <p>
                 Horario
-                <select name="horario" size="1">
+                <select name="Horario" size="1">
                     <option value="man">Mañana</option>
                     <option value="tarde">Tarde</option>
                     <option value="online">Online</option>
